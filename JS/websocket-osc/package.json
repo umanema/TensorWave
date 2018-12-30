@@ -1,0 +1,15 @@
+{
+  "name": "websocket-osc",
+  "version": "1.0.0",
+  "description": "websocket server to osc communication",
+  "main": "bidge.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GODA",
+  "license": "ISC",
+  "dependencies": {
+    "node-osc": "^3.0.0",
+    "websocket": "^1.0.28"
+  }
+}
