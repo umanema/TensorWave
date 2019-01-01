@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 08a048d4b75985c4a8f90ac9a0783801
+timeCreated: 1508485146
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - currentDayProfile: {instanceID: 0}
+  - nextDayProfile: {instanceID: 0}
+  - targetWeatherProfile: {instanceID: 0}
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: ad06b850a0af7a244bc861b28170964a, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

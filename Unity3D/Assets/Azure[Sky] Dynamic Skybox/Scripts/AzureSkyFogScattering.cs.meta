@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bcafa2aad6f28d34baa28eab272e7b62
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - fogBaseMaterial: {fileID: 2100000, guid: 9dcc17d8a487f124a944135867dc1d3b, type: 2}
+  - fogScatteringMaterial: {fileID: 2100000, guid: b658348ea66233f4fa9fd79e13e10dc2,
+      type: 2}
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: ae572dfffed6b3d4abfda047f5df283c, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

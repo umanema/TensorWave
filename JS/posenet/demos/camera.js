@@ -24,13 +24,14 @@ const videoWidth = 600;
 const videoHeight = 500;
 const stats = new Stats
 
+var serverPort = '50013'
+
 //osc
-var ws = new WebSocket('ws://' + window.location.hostname + ':50013/');
+var ws = new WebSocket('ws://' + window.location.hostname + ':'+serverPort+'/');
 
 ws.onopen = function () {
     // first we want users to enter their names
-    console.log('connected');
-	ws.send('hello');
+    console.log('Connected to server');
 };
 
 
@@ -274,6 +275,16 @@ function detectPoseInRealTime(video, net) {
     // and draw the resulting skeleton and keypoints if over certain confidence
     // scores
     poses.forEach(({score, keypoints}) => {
+		if (ws.readyState === ws.OPEN) {
+			var message = '';
+			for (var i = 0; i < 17; i++){
+				message += keypoints[i].position.x + ' ' + keypoints[i].position.y + ' ';
+			}
+			
+			ws.send(message);
+		}
+		
+		
       if (score >= minPoseConfidence) {
         if (guiState.output.showPoints) {
           drawKeypoints(keypoints, minPartConfidence, ctx);

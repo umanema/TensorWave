@@ -1,0 +1,2 @@
+Note: When you select the Stylized sunset mode, you must reconfigure each day profile to suit with the new color scheme of this sunset mode.
+The example day profiles in the "Profiles" folder are set to realistic sunset mode and may look strange in stylized sunset mode.
