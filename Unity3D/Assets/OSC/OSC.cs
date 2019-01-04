@@ -364,6 +364,45 @@ public class UDPPacketIO
 			return 0f;
 		}
 	}
+
+    public float[] GetFloatArray(int startIndex, int endIndex)
+    {
+        if (endIndex - startIndex <= 0)
+        {
+            Debug.Log("Ending index should be larger than starting index");
+            return new float[1] { 0f } ;
+        } else
+        {
+            if (values[startIndex].GetType() == typeof(int))
+            {
+                float[] data = new float[endIndex - startIndex + 1];
+                for (int i = 0; i <= endIndex - startIndex; i++)
+                {
+                    data[i] = Double.IsNaN((int)values[startIndex + i]) ? 0f : (int)values[startIndex + i];
+                }
+
+                return data;
+            }
+            else if (values[startIndex].GetType() == typeof(float))
+            {
+                float[] data = new float[endIndex - startIndex + 1];
+                for (int i = 0; i <= endIndex - startIndex; i++)
+                {
+                    
+                    data[i] = Double.IsNaN((float)values[startIndex + i]) ? 0f : (float)values[startIndex + i];
+                    Debug.Log(data[0] + " " + data[1] + " " + data[2]);
+
+                }
+                return data;
+            }
+            else
+            {
+                Debug.Log("Wrong type");
+                return new float[1] { 0f };
+            }
+        }
+        
+    }
 	
   }
 

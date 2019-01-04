@@ -2,6 +2,7 @@ var WebSocketServer = require('websocket').server;
 var osc = require('node-osc');
 
 var http = require('http');
+
 var port = 50013
 var udpPort = 9998
 
@@ -30,8 +31,8 @@ wsServer.on('request', function(request) {
 	connection.on('message', function(message) {
 		if (message.type === 'utf8') {
 			// process WebSocket message
-			//sendOSC(parseFloat(message.utf8Data));
-			console.log(message.utf8Data);
+			sendOSC(message.utf8Data.split(" ").map(parseFloat));
+			console.log(message.utf8Data.split(" ").map(parseFloat));
 		}
 	});
 

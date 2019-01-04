@@ -88,7 +88,7 @@ async function loadVideo() {
 }
 
 const guiState = {
-  algorithm: 'multi-pose',
+  algorithm: 'single-pose',
   input: {
     mobileNetArchitecture: isMobile() ? '0.50' : '0.75',
     outputStride: 16,
@@ -275,10 +275,13 @@ function detectPoseInRealTime(video, net) {
     // and draw the resulting skeleton and keypoints if over certain confidence
     // scores
     poses.forEach(({score, keypoints}) => {
+		//debug
+		//console.log(keypoints);
 		if (ws.readyState === ws.OPEN) {
+			
 			var message = '';
 			for (var i = 0; i < 17; i++){
-				message += keypoints[i].position.x + ' ' + keypoints[i].position.y + ' ';
+				message += keypoints[i].position.x + ' ' + keypoints[i].position.y + ' ' + keypoints[i].score + ' ';
 			}
 			
 			ws.send(message);
