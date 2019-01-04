@@ -1,0 +1,100 @@
+0:
+part: "nose"
+position: {x: 234.97609182017476, y: 404.11316762746}
+score: 0.9988526105880737
+__proto__: Object
+
+1:
+part: "leftEye"
+position: {x: 281.25554001677585, y: 349.9616893517517}
+score: 0.9989315867424011
+__proto__: Object
+
+2:
+part: "rightEye"
+position: {x: 176.75213002565, y: 349.04508491700904}
+score: 0.9995049238204956
+__proto__: Object
+
+3:
+part: "leftEar"
+position: {x: 321.72770519968884, y: 348.2487028445339}
+score: 0.2844579517841339
+__proto__: Object
+
+4:
+part: "rightEar"
+position: {x: 93.74579750156008, y: 393.42937535480644}
+score: 0.9930398464202881
+__proto__: Object
+
+5:
+part: "leftShoulder"
+position: {x: 210.01633766775805, y: 499.40172875216257}
+score: 0.009485296905040741
+__proto__: Object
+
+6:
+part: "rightShoulder"
+position: {x: 93.88003210803781, y: 493.8208451320555}
+score: 0.008025840856134892
+__proto__: Object
+
+7:
+part: "leftElbow"
+position: {x: 98.71192393955849, y: 394.3529492018544}
+score: 0.00936301052570343
+__proto__: Object
+
+8:
+part: "rightElbow"
+position: {x: 105.1452763347705, y: 395.42493985185985}
+score: 0.009667393751442432
+__proto__: Object
+
+9:
+part: "leftWrist"
+position: {x: 76.06788097080849, y: 382.55712383758646}
+score: 0.01665385439991951
+__proto__: Object
+
+10:
+part: "rightWrist"
+position: {x: 100.937594021999, y: 364.4752053653492}
+score: 0.026029855012893677
+__proto__: Object
+
+11:
+part: "leftHip"
+position: {x: 131.53955451680417, y: 360.71612612186414}
+score: 0.002156822709366679
+__proto__: Object
+
+12:
+part: "rightHip"
+position: {x: 197.0486146285821, y: 383.0709595993728}
+score: 0.0021112081594765186
+__proto__: Object
+
+13:
+part: "leftKnee"
+position: {x: 87.226305759794, y: 386.7870502405925}
+score: 0.0033040361013263464
+__proto__: Object
+
+14:
+part: "rightKnee"
+position: {x: 273.21938162522696, y: 400.6819675537954}
+score: 0.0025041799526661634
+__proto__: Object
+
+15:
+part: "leftAnkle"
+position: {x: 74.08570253997424, y: 413.56654183674846}
+score: 0.0020628487691283226
+__proto__: Object
+
+16:
+part: "rightAnkle"
+position: {x: 71.15142474036, y: 415.04545112794654}
+score: 0.003156757913529873
