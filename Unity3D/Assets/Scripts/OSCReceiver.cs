@@ -17,7 +17,9 @@ public class OSCReceiver : MonoBehaviour
     // Update is called once per frame
     void OnReceive(OscMessage message)
     {
-        bodyControl.fullBody.nose = convertFloatArrayToVector3(message.GetFloatArray(0, 2), bodyControl.nose);
+        bodyControl.fullBody.nose = convertFloatArrayToVector3(message.GetFloatArray(0, 2), bodyControl._nose);
+        bodyControl.fullBody.lElbow = convertFloatArrayToVector3(message.GetFloatArray(21, 23), bodyControl._lElbow);
+        bodyControl.fullBody.lElbow = convertFloatArrayToVector3(message.GetFloatArray(27, 29), bodyControl._lWrist);
         //Debug.Log(nose[0] + " " + nose[1] + " " + nose[2]);
     }
 

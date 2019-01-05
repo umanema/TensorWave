@@ -46,4 +46,9 @@ public class FullBody
         this.lAnkle = lAnkle;
         this.rAnkle = rAnkle;
     }
+
+    public Vector3 returnCoordinatesByPartName (string partName)
+    {
+        return (Vector3)this.GetType().GetField(partName).GetValue(this);
+    }
 }

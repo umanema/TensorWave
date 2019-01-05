@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class BodyControl : MonoBehaviour
 {
-    public GameObject Head;
+    public GameObject nose;
+    public GameObject lElbow;
+    public GameObject lWrist;
     //public GameObject LShin;
     //public GameObject RShin;
     public OSCReceiver oSCReceiver;
 
-    public Vector3 nose = new Vector3(0, 3, 0.2f);
+    public Vector3 _nose;
     public Vector3 lShoulder;
     public Vector3 rShoulder;
-    public Vector3 lElbow;
+    public Vector3 _lElbow;
     public Vector3 rElbow;
-    public Vector3 lWrist;
+    public Vector3 _lWrist;
     public Vector3 rWrist;
     public Vector3 lHip;
     public Vector3 rHip;
@@ -30,17 +32,23 @@ public class BodyControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fullBody = new FullBody(nose, lShoulder, rShoulder, lElbow, rElbow, lWrist, rWrist, lHip, rHip, lKnee, rKnee, lAnkle, rAnkle);
+        fullBody = new FullBody(_nose, lShoulder, rShoulder, _lElbow, rElbow, _lWrist, rWrist, lHip, rHip, lKnee, rKnee, lAnkle, rAnkle);
     }
 
     // Update is called once per frame
     void Update()
     {
-        limit.limit = nose.z;
-        Head.GetComponent<ConfigurableJoint>().linearLimit = limit;
-        Head.GetComponent<Rigidbody>().MovePosition(new Vector3(fullBody.nose.x, fullBody.nose.y, 0));
+        MoveJoint(nose, nameof(nose));
+        MoveJoint(lWrist, nameof(lWrist));
+    }
 
-        //LShin.GetComponent<Rigidbody>().MovePosition(new Vector3(1, 0, 0));
-        //RShin.GetComponent<Rigidbody>().MovePosition(new Vector3(-1, 0, 0));
+    void MoveJoint(GameObject part, string partName)
+    {
+        limit.limit = fullBody.returnCoordinatesByPartName(partName).z;
+        part.GetComponent<ConfigurableJoint>().linearLimit = limit;
+        part.GetComponent<Rigidbody>().MovePosition(new Vector3(fullBody.returnCoordinatesByPartName(partName).x, fullBody.returnCoordinatesByPartName(partName).y, 0));
+        Debug.Log(partName);
+        Debug.Log(new Vector3(fullBody.returnCoordinatesByPartName(partName).x, fullBody.returnCoordinatesByPartName(partName).y, 0));
+
     }
 }
