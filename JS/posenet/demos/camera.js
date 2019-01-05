@@ -65,14 +65,12 @@ async function setupCamera() {
   const mobile = isMobile();
   const stream = await navigator.mediaDevices.getUserMedia({
     'audio': false,
-    'video': {
-      facingMode: 'user',
-      width: mobile ? undefined : videoWidth,
-      height: mobile ? undefined : videoHeight,
-    },
+    'video': true,
   });
   video.srcObject = stream;
-
+  var videotracks = stream.getVideoTracks();
+  console.log(videotracks.length);
+  
   return new Promise((resolve) => {
     video.onloadedmetadata = () => {
       resolve(video);
@@ -117,14 +115,14 @@ const guiState = {
  * Sets up dat.gui controller on the top-right of the window
  */
 function setupGui(cameras, net) {
-  guiState.net = net;
 
+  guiState.net = net;
+  
   if (cameras.length > 0) {
     guiState.camera = cameras[0].deviceId;
   }
 
   const gui = new dat.GUI({width: 300});
-
   // The single-pose algorithm is faster and simpler but requires only one
   // person to be in the frame or results will be innaccurate. Multi-pose works
   // for more than 1 person
