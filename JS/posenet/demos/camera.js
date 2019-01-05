@@ -280,8 +280,10 @@ function detectPoseInRealTime(video, net) {
 		if (ws.readyState === ws.OPEN) {
 			
 			var message = '';
+			//combine all coordinates and probabilities
+			//coordinates are normalized
 			for (var i = 0; i < 17; i++){
-				message += keypoints[i].position.x + ' ' + keypoints[i].position.y + ' ' + keypoints[i].score + ' ';
+				message += keypoints[i].position.x/videoWidth + ' ' + (1 - keypoints[i].position.y/videoHeight) + ' ' + keypoints[i].score + ' ';
 			}
 			
 			ws.send(message);

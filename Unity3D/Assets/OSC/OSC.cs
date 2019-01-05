@@ -390,8 +390,6 @@ public class UDPPacketIO
                 {
                     
                     data[i] = Double.IsNaN((float)values[startIndex + i]) ? 0f : (float)values[startIndex + i];
-                    Debug.Log(data[0] + " " + data[1] + " " + data[2]);
-
                 }
                 return data;
             }
