@@ -29,7 +29,7 @@ public class OSCReceiver : MonoBehaviour
         bodyControl.fullBody.lKnee = convertFloatArrayToVector3(message.GetFloatArray(39, 41), bodyControl._lKnee);
         bodyControl.fullBody.rKnee = convertFloatArrayToVector3(message.GetFloatArray(42, 44), bodyControl._rKnee);
         bodyControl.fullBody.lAnkle = convertFloatArrayToVector3(message.GetFloatArray(45, 47), bodyControl._lAnkle);
-        bodyControl.fullBody.rAnkle = convertFloatArrayToVector3(message.GetFloatArray(48, 50), bodyControl._lAnkle);
+        bodyControl.fullBody.rAnkle = convertFloatArrayToVector3(message.GetFloatArray(48, 50), bodyControl._rAnkle);
 
     }
 

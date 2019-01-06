@@ -93,17 +93,30 @@ public class BodyControl : MonoBehaviour
     void Update()
     {
         MoveJoint(nose, nameof(nose), skeletonHead);
+        MoveJoint(lShoulder, nameof(lShoulder), skeletonLShoulder);
+        MoveJoint(rShoulder, nameof(rShoulder), skeletonRShoulder);
         MoveJoint(lElbow, nameof(lElbow), skeletonLElbow);
         MoveJoint(rElbow, nameof(rElbow), skeletonRElbow);
-
-        //MoveJoint(lWrist, nameof(lWrist));
+        MoveJoint(lWrist, nameof(lWrist), skeletonLWrist);
+        MoveJoint(rWrist, nameof(rWrist), skeletonRWrist);
+        MoveJoint(lHip, nameof(lHip), skeletonLHip);
+        MoveJoint(rHip, nameof(rHip), skeletonRHip);
+        MoveJoint(lKnee, nameof(lKnee), skeletonLKnee);
+        MoveJoint(rKnee, nameof(rKnee), skeletonRKnee);
+        MoveJoint(lAnkle, nameof(lAnkle), skeletonLAnkle);
+        MoveJoint(rAnkle, nameof(rAnkle), skeletonRAnkle);
     }
 
     void MoveJoint(GameObject part, string partName, GameObject skeleletonBone)
     {
+        //for calibration
+        float scale = 1f;
+        float offset = 0f;
         limit.limit = fullBody.returnCoordinatesByPartName(partName).z;
         part.GetComponent<ConfigurableJoint>().linearLimit = limit;
-        skeleletonBone.transform.localPosition = new Vector3(fullBody.returnCoordinatesByPartName(partName).x, fullBody.returnCoordinatesByPartName(partName).y, 0);
+        skeleletonBone.transform.localPosition = new Vector3(fullBody.returnCoordinatesByPartName(partName).x*scale-offset,
+                                                             fullBody.returnCoordinatesByPartName(partName).y,
+                                                             0);
 
     }
 }
