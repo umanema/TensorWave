@@ -110,11 +110,11 @@ public class BodyControl : MonoBehaviour
     void MoveJoint(GameObject part, string partName, GameObject skeleletonBone)
     {
         //for calibration
-        float scale = 1f;
-        float offset = 0f;
+        Vector2 scaleXY = new Vector2(1,1);
+        Vector2 offsetXY = new Vector2(0,0);
         limit.limit = fullBody.returnCoordinatesByPartName(partName).z;
         part.GetComponent<ConfigurableJoint>().linearLimit = limit;
-        skeleletonBone.transform.localPosition = new Vector3(fullBody.returnCoordinatesByPartName(partName).x*scale-offset,
+        skeleletonBone.transform.localPosition = new Vector3(fullBody.returnCoordinatesByPartName(partName).x* scaleXY.x- offsetXY.x,
                                                              fullBody.returnCoordinatesByPartName(partName).y,
                                                              0);
 
