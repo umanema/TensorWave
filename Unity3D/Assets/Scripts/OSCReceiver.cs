@@ -18,9 +18,19 @@ public class OSCReceiver : MonoBehaviour
     void OnReceive(OscMessage message)
     {
         bodyControl.fullBody.nose = convertFloatArrayToVector3(message.GetFloatArray(0, 2), bodyControl._nose);
+        bodyControl.fullBody.lShoulder = convertFloatArrayToVector3(message.GetFloatArray(15, 17), bodyControl._lShoulder);
+        bodyControl.fullBody.rShoulder = convertFloatArrayToVector3(message.GetFloatArray(18, 20), bodyControl._rShoulder);
         bodyControl.fullBody.lElbow = convertFloatArrayToVector3(message.GetFloatArray(21, 23), bodyControl._lElbow);
-        bodyControl.fullBody.lElbow = convertFloatArrayToVector3(message.GetFloatArray(27, 29), bodyControl._lWrist);
-        //Debug.Log(nose[0] + " " + nose[1] + " " + nose[2]);
+        bodyControl.fullBody.rElbow = convertFloatArrayToVector3(message.GetFloatArray(24, 26), bodyControl._rElbow);
+        bodyControl.fullBody.lWrist = convertFloatArrayToVector3(message.GetFloatArray(27, 29), bodyControl._lWrist);
+        bodyControl.fullBody.rWrist = convertFloatArrayToVector3(message.GetFloatArray(30, 32), bodyControl._rWrist);
+        bodyControl.fullBody.lHip = convertFloatArrayToVector3(message.GetFloatArray(33, 35), bodyControl._lHip);
+        bodyControl.fullBody.rHip = convertFloatArrayToVector3(message.GetFloatArray(36, 38), bodyControl._rHip);
+        bodyControl.fullBody.lKnee = convertFloatArrayToVector3(message.GetFloatArray(39, 41), bodyControl._lKnee);
+        bodyControl.fullBody.rKnee = convertFloatArrayToVector3(message.GetFloatArray(42, 44), bodyControl._rKnee);
+        bodyControl.fullBody.lAnkle = convertFloatArrayToVector3(message.GetFloatArray(45, 47), bodyControl._lAnkle);
+        bodyControl.fullBody.rAnkle = convertFloatArrayToVector3(message.GetFloatArray(48, 50), bodyControl._lAnkle);
+
     }
 
     Vector3 convertFloatArrayToVector3 (float[] array, Vector3 defaultValues)
