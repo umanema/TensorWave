@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BodyControl : MonoBehaviour
 {
 
     //for calibration
-    public Vector2 scaleXY = new Vector2(1, 1);
-    public Vector2 offsetXY = new Vector2(0, 0);
+    public Slider ScaleXSlider;
+    public Slider ScaleYSlider;
+    public Slider OffsetXSlider;
+    public Slider OffsetYSlider;
+
+    Vector2 scaleXY = new Vector2(1, 1);
+    Vector2 offsetXY = new Vector2(0, 0);
 
     [Header("Model Body Parts")]
     public GameObject nose;
@@ -97,6 +103,8 @@ public class BodyControl : MonoBehaviour
 
     void Update()
     {
+        scaleXY = new Vector2(ScaleXSlider.value, ScaleYSlider.value);
+        offsetXY = new Vector2(OffsetXSlider.value, OffsetYSlider.value);
         MoveJoint(nose, nameof(nose), skeletonHead);
         MoveJoint(lShoulder, nameof(lShoulder), skeletonLShoulder);
         MoveJoint(rShoulder, nameof(rShoulder), skeletonRShoulder);
@@ -117,8 +125,8 @@ public class BodyControl : MonoBehaviour
         
         limit.limit = fullBody.returnCoordinatesByPartName(partName).z;
         part.GetComponent<ConfigurableJoint>().linearLimit = limit;
-        skeleletonBone.transform.localPosition = new Vector3(fullBody.returnCoordinatesByPartName(partName).x*scaleXY.x-offsetXY.x,
-                                                             fullBody.returnCoordinatesByPartName(partName).y,
+        skeleletonBone.transform.localPosition = new Vector3(fullBody.returnCoordinatesByPartName(partName).x * scaleXY.x - offsetXY.x,
+                                                             fullBody.returnCoordinatesByPartName(partName).y * scaleXY.y + offsetXY.y,
                                                              0);
 
     }
