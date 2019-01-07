@@ -2,3 +2,4 @@ invoke-expression 'cmd /c start powershell -Command { node websocket-osc/bridge.
 
 cd posenet\demos
 yarn watch
+start posenet\demos\chrome
