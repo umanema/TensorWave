@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BodyControl : MonoBehaviour
 {
+
+    //for calibration
+    public Vector2 scaleXY = new Vector2(1, 1);
+    public Vector2 offsetXY = new Vector2(0, 0);
+
     [Header("Model Body Parts")]
     public GameObject nose;
     public GameObject lShoulder;
@@ -109,12 +114,10 @@ public class BodyControl : MonoBehaviour
 
     void MoveJoint(GameObject part, string partName, GameObject skeleletonBone)
     {
-        //for calibration
-        Vector2 scaleXY = new Vector2(1,1);
-        Vector2 offsetXY = new Vector2(0,0);
+        
         limit.limit = fullBody.returnCoordinatesByPartName(partName).z;
         part.GetComponent<ConfigurableJoint>().linearLimit = limit;
-        skeleletonBone.transform.localPosition = new Vector3(fullBody.returnCoordinatesByPartName(partName).x* scaleXY.x- offsetXY.x,
+        skeleletonBone.transform.localPosition = new Vector3(fullBody.returnCoordinatesByPartName(partName).x*scaleXY.x-offsetXY.x,
                                                              fullBody.returnCoordinatesByPartName(partName).y,
                                                              0);
 
