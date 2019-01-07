@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+
 
 public class BodyControl : MonoBehaviour
 {
@@ -105,6 +107,8 @@ public class BodyControl : MonoBehaviour
     {
         scaleXY = new Vector2(ScaleXSlider.value, ScaleYSlider.value);
         offsetXY = new Vector2(OffsetXSlider.value, OffsetYSlider.value);
+
+        
         MoveJoint(nose, nameof(nose), skeletonHead);
         MoveJoint(lShoulder, nameof(lShoulder), skeletonLShoulder);
         MoveJoint(rShoulder, nameof(rShoulder), skeletonRShoulder);
@@ -118,16 +122,39 @@ public class BodyControl : MonoBehaviour
         MoveJoint(rKnee, nameof(rKnee), skeletonRKnee);
         MoveJoint(lAnkle, nameof(lAnkle), skeletonLAnkle);
         MoveJoint(rAnkle, nameof(rAnkle), skeletonRAnkle);
+        
+        
     }
 
     void MoveJoint(GameObject part, string partName, GameObject skeleletonBone)
     {
-        
-        limit.limit = fullBody.returnCoordinatesByPartName(partName).z;
+
+        limit.limit = fullBody.returnCoordinatesByPartName(partName).z*0.2f;
+        //limit.limit = 1;
         part.GetComponent<ConfigurableJoint>().linearLimit = limit;
-        skeleletonBone.transform.localPosition = new Vector3(fullBody.returnCoordinatesByPartName(partName).x * scaleXY.x - offsetXY.x,
+        if (fullBody.returnCoordinatesByPartName(partName).z < 0.2)
+        {
+            
+            skeleletonBone.transform.DOLocalMove((Vector3)this.GetType().GetField("_"+partName).GetValue(this), 1f);
+        } else
+        {
+            /*
+            skeleletonBone.transform.localPosition = new Vector3(fullBody.returnCoordinatesByPartName(partName).x * scaleXY.x - offsetXY.x,
                                                              fullBody.returnCoordinatesByPartName(partName).y * scaleXY.y + offsetXY.y,
                                                              0);
+            */
+            /*
+            skeleletonBone.transform.DOLocalMove(new Vector3(fullBody.returnCoordinatesByPartName(partName).x * scaleXY.x - offsetXY.x,
+                                                             fullBody.returnCoordinatesByPartName(partName).y * scaleXY.y + offsetXY.y,
+                                                             0), 0.3f);
+            */
+
+
+            skeleletonBone.transform.localPosition = Vector3.Lerp((Vector3)this.GetType().GetField("_" + partName).GetValue(this),new Vector3(fullBody.returnCoordinatesByPartName(partName).x * scaleXY.x - offsetXY.x,
+                                                             fullBody.returnCoordinatesByPartName(partName).y * scaleXY.y + offsetXY.y,
+                                                             0), fullBody.returnCoordinatesByPartName(partName).z);
+        }
+        
 
     }
 }

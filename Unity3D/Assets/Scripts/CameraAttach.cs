@@ -18,7 +18,7 @@ public class CameraAttach : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        camera.transform.LookAt(target.transform);
+        //camera.transform.LookAt(target.transform);
         if (prevPos.x != target.transform.position.x || prevPos.z != target.transform.position.z)
         {
             DOTween.Clear();
