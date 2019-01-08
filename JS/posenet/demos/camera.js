@@ -20,8 +20,8 @@ import Stats from 'stats.js';
 
 import {drawBoundingBox, drawKeypoints, drawSkeleton} from './demo_util';
 
-const videoWidth = 600;
-const videoHeight = 500;
+const videoWidth = 300;
+const videoHeight = 250;
 const stats = new Stats
 
 var serverPort = '50013'
@@ -146,7 +146,7 @@ function setupGui(cameras, net) {
   // Image scale factor: What to scale the image by before feeding it through
   // the network.
   input.add(guiState.input, 'imageScaleFactor').min(0.2).max(1.0);
-  input.open();
+  //input.open();
 
   // Pose confidence: the overall confidence in the estimation of a person's
   // pose (i.e. a person detected in a frame)
@@ -166,13 +166,13 @@ function setupGui(cameras, net) {
   // nms Radius: controls the minimum distance between poses that are returned
   // defaults to 20, which is probably fine for most use cases
   multi.add(guiState.multiPoseDetection, 'nmsRadius').min(0.0).max(40.0);
-  multi.open();
+  single.open();
 
   let output = gui.addFolder('Output');
   output.add(guiState.output, 'showVideo');
   output.add(guiState.output, 'showSkeleton');
   output.add(guiState.output, 'showPoints');
-  output.add(guiState.output, 'showBoundingBox');
+  //output.add(guiState.output, 'showBoundingBox');
   output.open();
 
 
